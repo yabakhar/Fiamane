@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -15,24 +16,16 @@ class ChangeTheme extends StatelessWidget {
       appBar: AppBar(title: const Text("Change Theme")),
       body: Container(
         alignment: Alignment.center,
-        child: TextButton(
-          onPressed: () {
-            dashboardViewModel.isDark = !dashboardViewModel.isDark;
-          },
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Colors.blue,
-            ),
-            alignment: Alignment.center,
-            height: 50,
-            width: size.width / 3,
-            child: Text(
-              (dashboardViewModel.isDark) ? "Dark Mode" : "Light Mode",
-              style: const TextStyle(
-                color: Colors.white,
-              ),
-            ),
+        child: Transform.scale(
+          scale: 1.8,
+          child: CupertinoSwitch(
+            value: dashboardViewModel.isDark,
+            trackColor: Colors.amber,
+            thumbColor: Colors.white,
+            activeColor: Colors.black,
+            onChanged: (value) {
+              dashboardViewModel.isDark = value;
+            },
           ),
         ),
       ),
