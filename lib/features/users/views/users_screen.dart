@@ -31,6 +31,7 @@ class _UsersScreenState extends State<UsersScreen> {
     return Scaffold(
       appBar: AppBar(title: const Text("Users")),
       body: Consumer<UsersViewModel>(builder: (context, model, _) {
+        final usersLenght = (model.users.users ?? []).length;
         if (model.isLoading) {
           return LoadingWidget();
         } else if (model.isError) {
@@ -40,15 +41,13 @@ class _UsersScreenState extends State<UsersScreen> {
           padding: const EdgeInsets.all(8.0),
           child: ListView.separated(
             separatorBuilder: ((context, index) {
-              return const SizedBox(
-                height: 10,
-              );
+              return const SizedBox(height: 10);
             }),
             controller: scrollController,
-            itemCount: model.users.users.length + 1,
+            itemCount: usersLenght + 1,
             itemBuilder: (BuildContext context, int index) {
-              if (index < model.users.users.length) {
-                UserModel user = model.users.users[index];
+              if (index < usersLenght) {
+                UserModel user = model.users.users![index];
                 return CustomListTile(user: user);
               } else {
                 if (model.users.totalPages! > model.page) {

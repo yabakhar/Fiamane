@@ -25,7 +25,8 @@ class UsersViewModel extends ChangeNotifier {
       usersStatusSetter = UserStatus.failure;
       errorMessage = ErrorUtils.mapFailureToMessage(failure);
     }, (userResponse) {
-      users.users.addAll(userResponse.users);
+      users.users ??= [];
+      users.users?.addAll(userResponse.users ?? []);
       users.totalPages = userResponse.totalPages;
       usersStatusSetter = UserStatus.success;
     });
@@ -33,7 +34,7 @@ class UsersViewModel extends ChangeNotifier {
 
   bool get isLoading => userStatus == UserStatus.loading;
   bool get isError => userStatus == UserStatus.failure;
-  
+
   void handelInfiniteScroll(ScrollController scrollController) {
     if ((scrollController.offset ==
             scrollController.position.maxScrollExtent) &&

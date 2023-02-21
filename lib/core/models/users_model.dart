@@ -2,8 +2,6 @@ import 'package:fiamane/core/models/support_model.dart';
 import 'package:fiamane/core/models/user_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-
-
 part 'users_model.g.dart';
 
 @JsonSerializable()
@@ -15,7 +13,7 @@ class UsersModel {
   @JsonKey(name: 'total_pages')
   int? totalPages;
   @JsonKey(name: 'data')
-  List<UserModel> users;
+  List<UserModel>? users;
   SupportModel? support;
 
   UsersModel({
@@ -23,7 +21,7 @@ class UsersModel {
     this.perPage,
     this.total,
     this.totalPages,
-    this.users = const [],
+    this.users,
     this.support,
   });
 
