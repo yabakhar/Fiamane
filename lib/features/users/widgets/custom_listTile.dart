@@ -8,10 +8,6 @@ class CustomListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      shape: RoundedRectangleBorder(
-        side: const BorderSide(width: 1),
-        borderRadius: BorderRadius.circular(10),
-      ),
       leading: ClipRRect(
         borderRadius: BorderRadius.circular(10),
         child: SizedBox.fromSize(

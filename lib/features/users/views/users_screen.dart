@@ -1,9 +1,10 @@
 import 'package:fiamane/core/models/user_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
 
-import '../../../core/Widgets/error_widget.dart';
-import '../../../core/Widgets/loading_widget.dart';
+import '../../../core/widgets/error_widget.dart';
+import '../../../core/widgets/loading_widget.dart';
 import '../view_models/users_view_model.dart';
 import '../widgets/custom_listTile.dart';
 
@@ -43,12 +44,18 @@ class _UsersScreenState extends State<UsersScreen> {
             separatorBuilder: ((context, index) {
               return const SizedBox(height: 10);
             }),
+            physics: const BouncingScrollPhysics(),
             controller: scrollController,
             itemCount: usersLenght + 1,
+            cacheExtent: 1,
             itemBuilder: (BuildContext context, int index) {
               if (index < usersLenght) {
                 UserModel user = model.users.users![index];
-                return CustomListTile(user: user);
+                return CustomListTile(user: user)
+                    .animate()
+                    .flipH(perspective: -0.5, begin: 0.3)
+                    .fadeIn()
+                    .scaleX(begin: 0.5);
               } else {
                 if (model.users.totalPages! > model.page) {
                   return LoadingWidget();

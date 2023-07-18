@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../users/Views/users_screen.dart';
+import '../../users/views/users_screen.dart';
 import '../view_models/dashboard_view_model.dart';
 import 'change_theme.dart';
 

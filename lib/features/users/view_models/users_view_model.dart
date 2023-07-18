@@ -2,7 +2,7 @@ import 'package:fiamane/core/models/users_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/errors/error_util.dart';
-import '../Repositories/users_repository.dart';
+import '../repositories/users_repository.dart';
 
 enum UserStatus { loading, success, failure }
 

@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'features/dashboard/Views/dashbord_screen.dart';
 import 'features/dashboard/view_models/dashboard_view_model.dart';
-import 'features/users/Repositories/users_repository.dart';
+import 'features/users/repositories/users_repository.dart';
 import 'features/users/services/users_service.dart';
 import 'features/users/view_models/users_view_model.dart';
 
@@ -35,6 +35,6 @@ class Fiamane extends StatelessWidget {
         ),
       ],
       child: const Dashboard(),
-    );
+    ); 
   }
 }
